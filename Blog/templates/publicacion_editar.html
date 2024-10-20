@@ -21,12 +21,16 @@
 
         <div class="d-flex flex-row">
             <span for="resumen" class="input-group-text pl-3 col-2">Resumen</span>
-            <textarea class="col-6" name="resumen_public" id="resumen" value="{{form.instance.resumen_public}}">{{form.instance.resumen_public}}</textarea>
+            
+            <textarea style="white-space: pre-wrap;" wrap="hard" rows="10" cols="30" class="col-6" name="resumen_public" id="resumen" value="{{form.instance.resumen_public}}">{{form.instance.resumen_public}}</textarea>
+        
         </div>
 
         <div class="d-flex flex-row mt-3">
             <span for="contenido" class="input-group-text pl-3 col-4">Contenido de la publicación</span>
-            <textarea class="col-6" name="contenido_public" id="contenido" value="{{form.instance.contenido_public}}"> {{form.instance.contenido_public}} </textarea>
+            <div id="editor">
+            <textarea style="white-space: pre-wrap;" wrap="hard" rows="10" cols="30" class="col-6" name="contenido_public" id="contenido" value="{{form.instance.contenido_public}}"> {{form.instance.contenido_public}} </textarea>
+        </div>
         </div>
     
         <div class="d-flex flex-row mt-3">

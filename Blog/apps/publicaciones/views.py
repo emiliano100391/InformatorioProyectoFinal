@@ -44,12 +44,12 @@ def nueva_publicacion(request): # función para crear una nueva publicación
     if request.method == 'POST': # si el formulario es enviado
         form = NuevaPublicacionForm(request.POST, request.FILES) # si el formulario es valido
         if form.is_valid(): # si el formulario es valido
-            publicacion = form.save(commit=False) # no se guardan los datos
-            publicacion.autor_public = request.user # el usuario que crea la publicación
-            publicacion.fecha_creacion_public = timezone.now() # la fecha de creación de la publicación
-            publicacion.imagen_public = form.cleaned_data['imagen_public'] # la imagen de la publicación
-            publicacion.categorias = form.cleaned_data['categorias']
-            publicacion.save() # se guardan los datos
+            publicacion = form.save(commit=False)
+            publicacion.autor_public = request.user
+            publicacion.fecha_creacion_public = timezone.now()
+            publicacion.imagen_public = form.cleaned_data['imagen_public']
+            publicacion.save()  # Guardar el objeto Publicacion antes de establecer la relación
+            publicacion.categorias.set(form.cleaned_data['categorias']) # se guardan los datos
             return redirect('publicaciones:publicacion_detalle', id = publicacion.id) # redirigir a la publicación
     else:
         form = NuevaPublicacionForm()

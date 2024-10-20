@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.blog_auth',
     'apps.publicaciones',
     'apps.contacto',
+    'froala_editor',
     ]
 
 MIDDLEWARE = [

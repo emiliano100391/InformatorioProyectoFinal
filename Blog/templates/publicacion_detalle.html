@@ -3,7 +3,7 @@
 {% block contenido %}
 
 <section class="container mb-5">
-    <h1>{{publicacion.titulo_public}}</h1>
+    <h1 class="text-center">{{publicacion.titulo_public}}</h1>
     <p> {{publicacion.autor_public}} </p>
     <h6> <small> {{categorias|join:", "}}</small></h6>
     {% if publicacion.fecha_publicacion %}
@@ -25,7 +25,7 @@
     <p>No hay imagen</p>
     {% endif %}
 
-    <p> {{publicacion.contenido_public}} </p>
+    <div class="card-body mt-2"> {{publicacion.contenido_public}} </div>
 
     <a href="{% url 'publicaciones:publicacion_editar' publicacion.id %}" class="btn btn-primary">Editar</a> 
     <a href="{% url 'publicaciones:publicacion_eliminar' publicacion.id %}" class="btn btn-danger">Eliminar</a>
