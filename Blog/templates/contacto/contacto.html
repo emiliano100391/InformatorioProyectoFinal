@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<h2 class="mb-3 center">Contacto</h2>
+
+<section class="container">
+
+    <form action="{% url 'contacto:contacto' %}" method="post" class="form-control g-3 mt-5 text-center">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="mb-3">
+                {{ field.label_tag }} 
+                {{ field }}
+            </div>
+                {% if field.errors %}
+                    <div class="text-danger" style="text-decoration: none; list-style-type: none; ul{list-style: none}">
+                        <p>
+                        {{ field.errors }}
+                        </p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <input class="btn btn-success mt-3" type="submit" value="Enviar">
+        </form>
+</section>
+{% if enviado == 1 %}
+<p>Tu mensaje ha sido enviado</p>
+{% elif enviado == 0 %}
+<p>Tu mensaje no ha sido enviado</p>
+
+{% endif %}
+
+{% endblock contenido %}
